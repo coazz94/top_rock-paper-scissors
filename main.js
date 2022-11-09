@@ -1,6 +1,4 @@
 
-GameChoices = ["Paper", "Rock", "Scissors"]
-
 function getComputerChoice(){
     // Get a random number between 0-9 
     const num = Math.floor(Math.random() * 10) + 1;
@@ -17,21 +15,27 @@ function getComputerChoice(){
 
 
 function playerSelection() {
-
+    
+    // Possoible Choices the user can choose
+    const gameChoices = ["Paper", "Rock", "Scissors"];
+    // Get the Input and make it pretty
     const userchoice = prompt("What do you Choose ?  (Rock, Paper or Scissors)");
-    const prettychoice = makePretty(userchoice);
+    let prettychoice = makePretty(userchoice);
 
-    if (!GameChoices.includes(prettychoice)){
+    // If the answer is in the avaiable Game choices return the pretty Choice, else Error
+    if (!gameChoices.includes(prettychoice)){
         console.log("answer was INcorrect")
-    }else{
-        return prettychoice
-    }
+    };
+
+    return prettychoice
+
 };
 
 function makePretty (text) {
 
-    let temptext = text.toLowerCase().slice(1, 8)
-    let firstletter = text.slice(0, 1).toUpperCase()
+    // Take the text make it lower, and make the first letter capitalized
+    let temptext = text.toLowerCase().slice(1, 8);
+    let firstletter = text.slice(0, 1).toUpperCase();
 
     return firstletter + temptext
 };
@@ -48,7 +52,7 @@ function checkWinner(userchoice, compchoice){
     else if (userchoice === "Paper"){
         if (compchoice === "Rock"){
             return "Paper beats Rock, User wins"
-        }
+        };
         return "Scissors beats Paper, Comp wins"
     }
     else if (userchoice = "Rock"){
@@ -65,5 +69,12 @@ function checkWinner(userchoice, compchoice){
     }
 
 
+};
+
+
+function game(num){
+    for(let i = 0; i < num; i++ ){
+        checkWinner(playerSelection(), getComputerChoice())
+    }
 }
 
