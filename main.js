@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded", function(){
+
+    document.querySelectorAll("button").forEach(element => {
+        element.onclick = function () {
+            let test = checkWinner(element.value, getComputerChoice())
+            console.log(test)
+            
+        }
+        
+    });
+
+
+
+})
+
+
+
+
+
 
 function getComputerChoice(){
     // Get a random number between 0-9 
@@ -12,7 +31,6 @@ function getComputerChoice(){
         return "Scissors"
     }   
 };
-
 
 function playerSelection() {
     
@@ -47,13 +65,13 @@ function checkWinner(userchoice, compchoice){
 
 
     if (userchoice === compchoice){
-        return 2
+        return "Tie"
     }
     else if (userchoice === "Paper"){
         if (compchoice === "Rock"){
-            return "Paper beats Rock, User wins"
+            return ["Paper beats Rock, User wins",1];
         };
-        return "Scissors beats Paper, Comp wins"
+        return ["Scissors beats Paper, Comp wins",0];
     }
     else if (userchoice = "Rock"){
         if (compchoice === "Scissors"){
@@ -71,10 +89,17 @@ function checkWinner(userchoice, compchoice){
 
 };
 
-
 function game(num){
     for(let i = 0; i < num; i++ ){
         checkWinner(playerSelection(), getComputerChoice())
     }
 }
 
+function updateScore(winner){
+
+    // 1 = User wins
+
+    if (winner == 1){
+
+    }
+}
