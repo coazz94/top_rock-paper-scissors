@@ -2,8 +2,20 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document.querySelectorAll("button").forEach(element => {
         element.onclick = function () {
-            let test = checkWinner(element.value, getComputerChoice())
-            console.log(test)
+            let compchoice = getComputerChoice();
+            let result = getWinner(element.innerHTML, compchoice)
+            updatetext(result, compchoice, element.innerHTML)
+
+            document.querySelectorAll(".score").forEach(score => {
+                if (score.innerHTML >= 5){
+                    if (score.id == "userscore"){
+                        console.log("USER HAS WON")
+                    }else if (score.id == "compscore"){
+                        console.log("PC has won")
+                    }
+
+                }
+            })
             
         }
         
@@ -58,10 +70,10 @@ function makePretty (text) {
     return firstletter + temptext
 };
 
-function checkWinner(userchoice, compchoice){
+function getWinner(userchoice, compchoice){
 
     // Rock beats "Scissors", "Scissors" beats Paper, Paper beats Rock 
-    // 0 = User wins, 1 = Comp wins, 2 = Tie
+    // 0 = Comp wins, 1 = User wins, 2 = Tie
 
 
     if (userchoice === compchoice){
@@ -69,20 +81,26 @@ function checkWinner(userchoice, compchoice){
     }
     else if (userchoice === "Paper"){
         if (compchoice === "Rock"){
-            return ["Paper beats Rock, User wins",1];
+            updateresult(1)
+            return "Paper beats Rock, User wins";
         };
-        return ["Scissors beats Paper, Comp wins",0];
+        updateresult(0)
+        return "Scissors beats Paper, Comp wins";
     }
     else if (userchoice = "Rock"){
         if (compchoice === "Scissors"){
+            updateresult(1)
             return "Rock beats Scissors, User wins"
         }
+        updateresult(0)
         return "Paper beats Rock, Comp wins"
     }
     else{
         if (compchoice === "Paper"){
+            updateresult(1)
             return "Scissors beats Paper, User wins"
         }
+        updateresult(0)
         return "Rock beats Scissors, Comp wins"
     }
 
@@ -91,15 +109,32 @@ function checkWinner(userchoice, compchoice){
 
 function game(num){
     for(let i = 0; i < num; i++ ){
-        checkWinner(playerSelection(), getComputerChoice())
+        getWinner(playerSelection(), getComputerChoice())
     }
 }
 
-function updateScore(winner){
 
-    // 1 = User wins
+function updatetext(result, compchoice, userchoice){
+    
+    document.querySelector(".firsttext").innerHTML = result;
+    document.querySelector("#compchoice").innerHTML = compchoice;
+    document.querySelector("#userchoice").innerHTML = userchoice;
 
-    if (winner == 1){
+}
 
+
+async function updateresult(winner){
+
+    // 0 Comp was winner, 1 User
+
+    if (winner == 0){
+        let score = parseInt(document.querySelector("#compscore").innerHTML);
+        document.querySelector("#compscore").innerHTML = score + 1;
+
+    }else if (winner == 1){
+        let score = parseInt(document.querySelector("#userscore").innerHTML);
+        document.querySelector("#userscore").innerHTML = score + 1;
     }
+
+
 }

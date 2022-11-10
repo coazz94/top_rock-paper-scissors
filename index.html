@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link ref="stylsheet" href="styles.css">
+        <link rel='stylesheet' href='styles.css'/>
         <script src="main.js"></script>
     </head>
     <body>
-        <div class="buttons">
-            <button>Rock</button>
-            <button>Scissors</button>
-            <button>Paper</button>
+
+        <div class="heading">
+            <div class="text">
+                <h5 class="mainhead">Rock Scissors or Paper</h5>
+            </div>
+        </div> 
+        <div class="playingfield">
+            <div class="resultspace">
+                <div class="starttext">
+                    <p class="firsttext">Choose between the Options above</p>
+                    <p class="secondtext">First Player to reach 5 Points wins</p>
+                    <div class="choices">
+                        <div>
+                            <strong>Comp:</strong><p class="choicetext" id="compchoice">?</p>
+                        </div>
+                        <div>
+                            <strong>User:</strong><p class="choicetext"  id="userchoice">?</p>
+                        </div>
+                    </div>
+                    <div class="numberresult">
+                        <div>
+                            <strong>Comp:</strong><p class="score" id="compscore">0</p>
+                        </div>
+                        <div>
+                            <strong>User:</strong><p class="score" id="userscore">0</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="buttonspace">
+                <div class="allbtt">
+                    <button class="bttoption">Rock</button>
+                    <button class="bttoption">Scissors</button>
+                    <button class="bttoption">Paper</button>
+                </div>
+                </div>
         </div>
-        <div class="roundresult">
-        </div>
-        <div class="result">
-            <p>User:</p>
-            <span id="useresult">0</span>
-            <p>Comp:</p>
-            <span id="compresult">0</span>
-        </div>
+
+
 
     </body>
 </html>

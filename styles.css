@@ -1,0 +1,115 @@
+
+
+body {
+    margin: 0;
+    font-family: system-ui;
+}
+
+
+.heading{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
+    background-color: #074f57;
+    color: white;
+
+}
+
+.playingfield{
+    background-color: #394041;
+    color: white;
+    padding: 40px 0px;
+}
+
+
+.mainhead {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.buttonspace{
+    display: flex;
+    justify-content: center;
+}
+
+.allbtt{
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    width: 350px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bttoption {
+    height: 100px;
+    width: 100px;
+    font-size: 20px;
+
+}
+
+
+.resultspace {
+    display: flex;
+    justify-content:center;
+}
+
+
+.starttext {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 10px;
+}
+
+.firsttext {
+    margin: 0;
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+}
+
+.secondtext {
+    margin: 0;
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+}
+
+
+.secondtext {
+    margin: 0;
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+}
+
+
+.choices {
+    display: flex;
+    justify-content: center;
+}
+
+.choices > div {
+    margin: 25px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+
+.choicetext{
+    margin-left: 10px;
+}
+
+.numberresult {
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.numberresult > div {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
