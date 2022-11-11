@@ -1,33 +1,18 @@
 document.addEventListener("DOMContentLoaded", function(){
-
     document.querySelectorAll("button").forEach(element => {
         element.onclick = function () {
+            // Get the Choice of the Comp (random)
             let compchoice = getComputerChoice();
-            let result = getWinner(element.innerHTML, compchoice)
-            updatetext(result, compchoice, element.innerHTML)
-
-            document.querySelectorAll(".score").forEach(score => {
-                if (score.innerHTML >= 5){
-                    if (score.id == "userscore"){
-                        console.log("USER HAS WON")
-                    }else if (score.id == "compscore"){
-                        console.log("PC has won")
-                    }
-
-                }
-            })
+            // Get The winner of the Battle
+            let result = getWinner(element.innerHTML, compchoice);
+            // Get The winner of the Battle
+            updatetext(result, compchoice, element.innerHTML);
+            // Get The winner of the Battle
+            checkforWinner();
             
-        }
-        
+        };   
     });
-
-
-
-})
-
-
-
-
+});
 
 
 function getComputerChoice(){
@@ -36,13 +21,13 @@ function getComputerChoice(){
 
     // return Rock, Paper, Scissors depending on the random number
     if (num <= 3){
-        return "Paper"
+        return "Paper";
     }else if (num > 3 && num <= 6){
-        return "Rock"
+        return "Rock";
     }else{
-        return "Scissors"
+        return "Scissors";
     }   
-};
+}
 
 function playerSelection() {
     
@@ -54,12 +39,10 @@ function playerSelection() {
 
     // If the answer is in the avaiable Game choices return the pretty Choice, else Error
     if (!gameChoices.includes(prettychoice)){
-        console.log("answer was INcorrect")
-    };
-
-    return prettychoice
-
-};
+        console.log("answer was INcorrect");
+    }
+    return prettychoice;
+}
 
 function makePretty (text) {
 
@@ -67,8 +50,8 @@ function makePretty (text) {
     let temptext = text.toLowerCase().slice(1, 8);
     let firstletter = text.slice(0, 1).toUpperCase();
 
-    return firstletter + temptext
-};
+    return firstletter + temptext;
+}
 
 function getWinner(userchoice, compchoice){
 
@@ -77,56 +60,56 @@ function getWinner(userchoice, compchoice){
 
 
     if (userchoice === compchoice){
-        return "Tie"
+        return "Tie";
     }
     else if (userchoice === "Paper"){
         if (compchoice === "Rock"){
-            updateresult(1)
+            updateresult(1);
             return "Paper beats Rock, User wins";
-        };
-        updateresult(0)
+        }
+        updateresult(0);
         return "Scissors beats Paper, Comp wins";
     }
-    else if (userchoice = "Rock"){
+    else if (userchoice === "Rock"){
         if (compchoice === "Scissors"){
-            updateresult(1)
-            return "Rock beats Scissors, User wins"
+            updateresult(1);
+            return "Rock beats Scissors, User wins";
         }
-        updateresult(0)
-        return "Paper beats Rock, Comp wins"
+        updateresult(0);
+        return "Paper beats Rock, Comp wins";
     }
     else{
         if (compchoice === "Paper"){
-            updateresult(1)
-            return "Scissors beats Paper, User wins"
+            updateresult(1);
+            return "Scissors beats Paper, User wins";
         }
-        updateresult(0)
-        return "Rock beats Scissors, Comp wins"
+        updateresult(0);
+        return "Rock beats Scissors, Comp wins";
     }
 
 
-};
+}
 
 function game(num){
+    // A function to play the Game X times
     for(let i = 0; i < num; i++ ){
-        getWinner(playerSelection(), getComputerChoice())
+        getWinner(playerSelection(), getComputerChoice());
     }
 }
 
-
 function updatetext(result, compchoice, userchoice){
-    
+    // Update the Html Values
     document.querySelector(".firsttext").innerHTML = result;
     document.querySelector("#compchoice").innerHTML = compchoice;
     document.querySelector("#userchoice").innerHTML = userchoice;
-
+    
 }
 
-
 async function updateresult(winner){
-
+    
+    // Update the result on the Page
     // 0 Comp was winner, 1 User
-
+ 
     if (winner == 0){
         let score = parseInt(document.querySelector("#compscore").innerHTML);
         document.querySelector("#compscore").innerHTML = score + 1;
@@ -137,4 +120,19 @@ async function updateresult(winner){
     }
 
 
+}
+
+function checkforWinner(){
+    // Take both of the Scores and see if one has reached 5, if so alert a winner and reload the Page
+    document.querySelectorAll(".score").forEach(score => {
+        if (score.innerHTML >= 5){
+            if (score.id == "userscore"){
+                alert("USER HAS WON");
+                window.location.reload();
+            }else if (score.id == "compscore"){
+                alert("PC has won");
+                window.location.reload();
+            }
+        }
+    });
 }
